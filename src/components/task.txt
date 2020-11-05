@@ -1,0 +1,8 @@
+1. Create a dropdown on "All Categories" on Nav bar - Dropdown should show multiple dummy categories ( assume categories coming from dummny array)
+3. Search box should take the remaining space in the navigation ( ie. space upto the left till the logo)
+2.  Use react use effects to get dummy data from this api - https://jsonplaceholder.typicode.com/todos/ and render the quote cards
+
+Criteria -
+-> code architecture
+-> UI responsiveness
+-> performance

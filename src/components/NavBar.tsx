@@ -28,10 +28,10 @@ export const NavBar = () => {
                     <input className="hidden" type="checkbox" id="menu-toggle" />
 
                     <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-                        <div className="relative text-teal-600 ">
+                        <div className="relative text-teal-600 py-2">
                             <input
                                 type="search"
-                                name="serch"
+                                name="seyrch"
                                 placeholder="Search"
                                 className="bg-teal h-10 px-5 pr-10 rounded-md w-full text-lg sm:text-sm focus:outline-none"
                             />
@@ -40,29 +40,50 @@ export const NavBar = () => {
                         <nav>
                             <ul className="lg:flex items-center justify-between text-base text-teal-800 pt-4 lg:pt-0">
                                 <li>
-                                    <a
-                                        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-teal-400"
-                                        href="#"
+                                    <button
+                                        type="button"
+                                        className="inline-flex justify-center  px-4 py-2 bg-teal text-sm leading-5 font-medium text-teal-700 hover:text-white focus:outline-none focus:border-teal-300 focus:shadow-outline-teal active:bg-teal-50 active:text-teal-800 transition ease-in-out duration-150"
+                                        id="options-menu"
+                                        aria-haspopup="true"
+                                        aria-expanded="true"
                                     >
-                                        Features
-                                    </a>
+                                        All Categories
+                                        <svg
+                                            className="-mr-1 ml-2 h-5 w-5"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </button>
                                 </li>
 
                                 <li>
-                                    <a
-                                        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-teal-400"
-                                        href="#"
+                                    <button
+                                        type="button"
+                                        className="inline-flex justify-center  px-4 py-2 bg-teal text-sm leading-5 font-medium text-teal-700 hover:text-white focus:outline-none focus:border-teal-300 focus:shadow-outline-teal active:bg-teal-50 active:text-teal-800 transition ease-in-out duration-150"
+                                        id="options-menu"
+                                        aria-haspopup="true"
+                                        aria-expanded="true"
                                     >
-                                        Documentation
-                                    </a>
+                                        Top 100
+                                    </button>
                                 </li>
                                 <li>
-                                    <a
-                                        className="lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-teal-400 lg:mb-0 mb-2"
-                                        href="#"
+                                    <button
+                                        type="button"
+                                        className="inline-flex justify-center  px-4 py-2 bg-teal text-sm leading-5 font-medium text-teal-700 hover:text-white focus:outline-none focus:border-teal-300 focus:shadow-outline-teal active:bg-teal-50 active:text-teal-800 transition ease-in-out duration-150"
+                                        id="options-menu"
+                                        aria-haspopup="true"
+                                        aria-expanded="true"
                                     >
-                                        Support
-                                    </a>
+                                        Top Authors
+                                    </button>
                                 </li>
                             </ul>
                         </nav>
