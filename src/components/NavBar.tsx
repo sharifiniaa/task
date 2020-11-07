@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
-export const NavBar = () => {
+// mock data
+import { categories } from '../data/categories';
+
+// custom hook
+import useOutsideClick from '../helper/hook/useOutSideClick';
+
+export const NavBar: React.FC = () => {
+    const [toggleDropdown, setToggleDropDown] = useState(false);
+    const DropDownRef = useRef<HTMLLIElement>(null);
+
+    useOutsideClick(DropDownRef, () => {
+        if (toggleDropdown) setToggleDropDown(false);
+    });
+
+    const handleToggle = () => {
+        setToggleDropDown(!toggleDropdown);
+    };
+
     return (
         <header className="lg:px-16 px-6 bg-teal flex flex-wrap items-center bg-teal-400 lg:py-0 py-2">
             <div className="container mx-auto  max-w-7xl">
-                <div className="flex justify-between">
+                <div className="flex items-center justify-between">
                     <div className="flex-1 justify-start items-center">
                         <a href="#">
                             <svg width="32" height="36" viewBox="0 0 32 36" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +30,7 @@ export const NavBar = () => {
                         </a>
                     </div>
 
-                    <label for="menu-toggle" className="pointer-cursor lg:hidden block">
+                    <label htmlFor="menu-toggle" className="pointer-cursor lg:hidden block">
                         <svg
                             className="fill-current text-gray-900"
                             xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +44,8 @@ export const NavBar = () => {
                     </label>
                     <input className="hidden" type="checkbox" id="menu-toggle" />
 
-                    <div className="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
-                        <div className="relative text-teal-600 py-2">
+                    <div className="flex-2 justify-between flex-grow hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
+                        <div className="relative text-teal-600 flex-grow py-2">
                             <input
                                 type="search"
                                 name="seyrch"
@@ -39,13 +56,14 @@ export const NavBar = () => {
                         </div>
                         <nav>
                             <ul className="lg:flex items-center justify-between text-base text-teal-800 pt-4 lg:pt-0">
-                                <li>
+                                <li className="relative" ref={DropDownRef}>
                                     <button
                                         type="button"
                                         className="inline-flex justify-center  px-4 py-2 bg-teal text-sm leading-5 font-medium text-teal-700 hover:text-white focus:outline-none focus:border-teal-300 focus:shadow-outline-teal active:bg-teal-50 active:text-teal-800 transition ease-in-out duration-150"
                                         id="options-menu"
                                         aria-haspopup="true"
                                         aria-expanded="true"
+                                        onClick={handleToggle}
                                     >
                                         All Categories
                                         <svg
@@ -55,12 +73,39 @@ export const NavBar = () => {
                                             fill="currentColor"
                                         >
                                             <path
-                                                fill-rule="evenodd"
+                                                fillRule="evenodd"
                                                 d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                clip-rule="evenodd"
+                                                clipRule="evenodd"
                                             />
                                         </svg>
                                     </button>
+
+                                    <div
+                                        className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg ${
+                                            !toggleDropdown && 'hidden'
+                                        }`}
+                                    >
+                                        <div className="rounded-md bg-white shadow-xs">
+                                            <div
+                                                className="py-1"
+                                                role="menu"
+                                                aria-orientation="vertical"
+                                                aria-labelledby="options-menu"
+                                            >
+                                                {categories?.map((item) => (
+                                                    <a
+                                                        href="#"
+                                                        key={item.id}
+                                                        // href example => /item.name || item-id
+                                                        className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                        role="menuitem"
+                                                    >
+                                                        {item.name}
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
 
                                 <li>

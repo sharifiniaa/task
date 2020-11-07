@@ -1,5 +1,6 @@
 export type QuoteType = {
-    quote: string;
-    author: string;
-    views: number;
+    userId: number;
+    id: number;
+    title: string;
+    complated: boolean;
 };
